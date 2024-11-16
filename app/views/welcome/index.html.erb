@@ -1,9 +1,8 @@
 <% counter = 1 %>
 
 <% 3.times do %>
-  <%= render 'counter', counter: counter %>
-  <% counter += 1 %>
+<%= render 'counter', counter: counter %>
+<% counter += 1 %>
 <% end %>
 
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<%= api_v1_pins_url %>

@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+  namespace :api, format: 'json' do
+    namespace :v1 do
+      resources :pins, only: [:index, :show]
+      get "welcome/index"
+    end
+  end
+
   resources :comments
   resources :pins
+
   get "welcome/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
