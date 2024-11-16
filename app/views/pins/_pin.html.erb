@@ -1,5 +1,5 @@
 <div id="<%= dom_id pin %>">
-  <%= image_tag pin.pin_image.url, width: 600 %>
+  <%= image_tag pin.pin_image.url, width: 600 if pin.pin_image.present? %>
 
   <p>
     <strong>Title:</strong>
@@ -9,6 +9,18 @@
   <p>
     <strong>Description:</strong>
     <%= pin.description %>
+  </p>
+
+  <p>
+    <% pin.tags.each do |tag| %>
+      <%= link_to tag.name, tagged_pins_path(tag.name) %>
+    <% end %>
+  </p>
+
+  <p>
+    <% pin.categories.each do |tag| %>
+      <%= link_to tag.name, tagged_pins_path(tag.name) %>
+    <% end %>
   </p>
 
   <%= render partial: "like/button", locals: { likeable: pin } %>

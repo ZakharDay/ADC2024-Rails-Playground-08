@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :pins do
     resources :comments
+
+    get "/by_tag/:tag", to: "pins#by_tag", on: :collection, as: "tagged"
   end
 
   get "welcome/index"

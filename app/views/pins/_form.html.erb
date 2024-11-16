@@ -5,7 +5,7 @@
 
       <ul>
         <% pin.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
@@ -24,6 +24,18 @@
   <div>
     <%= form.label :pin_image, style: "display: block" %>
     <%= form.file_field :pin_image %>
+  </div>
+
+  <div>
+    <label for="">Tags</label>
+    <br>
+    <%= form.text_area :tag_list %>
+  </div>
+
+  <div>
+    <label for="">Categories</label>
+    <br>
+    <%= form.text_area :category_list %>
   </div>
 
   <br>

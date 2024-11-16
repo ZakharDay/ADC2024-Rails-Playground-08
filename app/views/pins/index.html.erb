@@ -1,3 +1,19 @@
+<div>
+  <%= link_to "All pins", pins_path %>
+  
+  <% Pin.tag_counts_on(:categories).each do |tag| %>
+    <%= link_to tag.name, tagged_pins_path(tag.name) %>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "All pins", pins_path %>
+  
+  <% Pin.tag_counts_on(:tags).each do |tag| %>
+    <%= link_to tag.name, tagged_pins_path(tag.name) %>
+  <% end %>
+</div>
+
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Pins" %>
