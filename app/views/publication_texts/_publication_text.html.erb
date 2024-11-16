@@ -1,0 +1,13 @@
+<div id="<%= dom_id publication_text %>">
+  <p>
+    <strong>Title:</strong>
+    <%= publication_text.title %>
+  </p>
+
+  <p>
+    <strong>Body:</strong>
+    <%= publication_text.body %>
+  </p>
+
+  <%= link_to "Show this publication", publication_path(publication_text) %>
+</div>

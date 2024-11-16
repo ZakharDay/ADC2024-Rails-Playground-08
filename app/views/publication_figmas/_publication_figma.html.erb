@@ -1,0 +1,17 @@
+<div id="<%= dom_id publication_figma %>">
+  <p>
+    <strong>Title:</strong>
+    <%= publication_figma.title %>
+  </p>
+
+  <p>
+    <strong>Body:</strong>
+    <%= publication_figma.body %>
+  </p>
+
+  <%= publication_figma.embed.html_safe %>
+
+  <br>
+
+  <%= link_to "Show this publication", publication_path(publication_figma) %>
+</div>
