@@ -11,6 +11,8 @@
     Id: <%= comment.id %>, Nested level: <%= nested_level(comment) %>
   </p>
 
+  <%= render partial: "like/button", locals: { likeable: comment } %>
+
   <%= render partial: "comments/form",
              locals: {
                comment: Comment.new,

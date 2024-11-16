@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "like/toggle"
+
   devise_for :users
 
   namespace :api, format: 'json' do
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :profiles
-  
+
   resources :pins do
     resources :comments
   end
