@@ -1,12 +1,23 @@
-<div id="<%= dom_id comment %>">
+<div class="comment <%= 'reply' if comment.comment_id != nil %>" id="<%= dom_id comment %>">
   <p>
-    <strong>Body:</strong>
+    <%= comment.created_at %>
+  </p>
+
+  <p>
     <%= comment.body %>
   </p>
 
   <p>
-    <strong>Pin:</strong>
-    <%= comment.pin_id %>
+    Id: <%= comment.id %>, Nested level: <%= nested_level(comment) %>
   </p>
 
+  <%= render partial: "comments/form",
+             locals: {
+               comment: Comment.new,
+               parent_comment_id: comment.id
+             } %>
+
+  <% if comment.replies.any? %>
+    <%= render comment.replies, partial: "comments/comment", as: :comment %>
+  <% end %>
 </div>

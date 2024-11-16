@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   namespace :api, format: 'json' do
     namespace :v1 do
       resources :pins, only: [:index, :show]
@@ -6,8 +8,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :comments
-  resources :pins
+  resources :profiles
+  
+  resources :pins do
+    resources :comments
+  end
 
   get "welcome/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
