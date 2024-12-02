@@ -1,3 +1,11 @@
+<%
+  set_meta_tags(
+    title: @pin.title,
+    description: @pin.description,
+    keywords: "пины, картинки, дизайн"
+  )
+%>
+
 <p style="color: green"><%= notice %></p>
 
 <%= render @pin %>
@@ -12,5 +20,5 @@
 <%= render "comments/form", comment: Comment.new %>
 
 <% @pin.comments.no_replies.each do |comment| %>
-  <%= render "comments/comment", comment: comment %>
+<%= render "comments/comment", comment: comment %>
 <% end %>
