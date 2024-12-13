@@ -1,0 +1,13 @@
+<%= turbo_stream.replace "pin_form" do %>
+  <%= link_to "New pin", new_pin_path, id: "new_pin_link", data: { turbo_stream: true } %>
+<% end %>
+
+<%= turbo_stream.replace "pin_index_heading" do %>
+  <div id="pin_index_heading">
+    <% pins = Pin.all %>
+    <h1>Пины (<%= pins.count %>)</h1>
+    <p><%= pins.count %> <%= Russian.p(pins.count, "пин", "пина", "пинов") %></p>
+  </div>
+<% end %>
+
+<%= turbo_stream.prepend "pins", partial: "pins/pin", locals: { pin: @pin }  %>

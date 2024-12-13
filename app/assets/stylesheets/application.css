@@ -63,3 +63,12 @@
     }
   }
 }
+
+.dice {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+  text-align: center;
+  line-height: 100px;
+  font-size: 30px;
+}

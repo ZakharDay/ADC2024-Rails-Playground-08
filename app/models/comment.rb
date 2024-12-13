@@ -7,4 +7,7 @@ class Comment < ApplicationRecord
 
   default_scope { order(created_at: "DESC") }
   scope :no_replies, -> { where(comment_id: nil) }
+
+  # after_update_commit { current_user ? broadcast_append_to("comments") : nil }
+  after_create_commit { broadcast_prepend_to("comments") }
 end

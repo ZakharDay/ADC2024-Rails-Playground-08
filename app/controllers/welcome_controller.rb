@@ -5,4 +5,8 @@ class WelcomeController < ApplicationController
     @name = 'ADC'
   end
 
+  def dice
+    @dice = rand(0..9)
+  end
+
 end

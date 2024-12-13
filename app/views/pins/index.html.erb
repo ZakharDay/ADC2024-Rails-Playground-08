@@ -6,7 +6,7 @@
   )
 %>
 
-<%= link_to "New pin", new_pin_path %>
+<%= link_to "New pin", new_pin_path, id: "new_pin_link", data: { turbo_stream: true } %>
 
 <br><br>
 
@@ -30,14 +30,13 @@
 
 <% content_for :title, "Pins" %>
 
-<h1>Пины (<%= @pins.count %>)</h1>
-<p><%= @pins.count %> <%= Russian.p(@pins.count, "пин", "пина", "пинов") %></p>
+<div id="pin_index_heading">
+  <h1>Пины (<%= @pins.count %>)</h1>
+  <p><%= @pins.count %> <%= Russian.p(@pins.count, "пин", "пина", "пинов") %></p>
+</div>
 
 <div id="pins">
   <% @pins.each do |pin| %>
     <%= render pin %>
-    <p>
-      <%= link_to "Show this pin", pin %>
-    </p>
   <% end %>
 </div>

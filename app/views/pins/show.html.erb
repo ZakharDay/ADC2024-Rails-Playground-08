@@ -8,17 +8,23 @@
 
 <p style="color: green"><%= notice %></p>
 
-<%= render @pin %>
+<%= turbo_frame_tag dom_id(@pin) do %>
+  <%= render @pin %>
 
-<div>
-  <%= link_to "Edit this pin", edit_pin_path(@pin) %> |
-  <%= link_to "Back to pins", pins_path %>
+  <div>
+    <%= link_to "Edit this pin", edit_pin_path(@pin) %> |
+    <%= link_to "Back to pins", pins_path %>
 
-  <%= button_to "Destroy this pin", @pin, method: :delete %>
-</div>
-
-<%= render "comments/form", comment: Comment.new %>
-
-<% @pin.comments.no_replies.each do |comment| %>
-<%= render "comments/comment", comment: comment %>
+    <%= button_to "Destroy this pin", @pin, method: :delete %>
+  </div>
 <% end %>
+
+<%= render partial: "comments/form", locals: { url: pin_comments_path(@pin), comment: Comment.new } %>
+
+<%= turbo_stream_from "comments" %>
+
+<div id="comments">
+  <% @pin.comments.no_replies.each do |comment| %>
+    <%= render "comments/comment", comment: comment %>
+  <% end %>
+</div>

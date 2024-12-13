@@ -1,5 +1,5 @@
 <% content_for :breadcrumbs do %>
-  <div>breadcrumbs</div>
+<div>breadcrumbs</div>
 <% end %>
 
 <%= t :hello %>
@@ -32,3 +32,11 @@
 <% end %>
 
 <%= api_v1_pins_url %>
+
+<%= render "dice" %>
+
+<%= link_to "Roll dice", welcome_dice_path, data: { turbo_stream: true } %>
+
+<br><br><br><br><br><br>
+<%= SecureRandom.hex(10) %>
+<br><br><br><br><br><br>
