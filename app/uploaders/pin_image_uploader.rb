@@ -31,13 +31,13 @@ class PinImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fill: [50, 50]
-  # end
+  version :thumb do
+    process resize_to_fill: [50, 50]
+  end
 
-  # version :q70 do
-  #   process optimize: [{ quality: 70 }]
-  # end
+  version :q70 do
+    process optimize: [{ quality: 70 }]
+  end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:

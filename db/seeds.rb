@@ -5,6 +5,7 @@
 
 def seed
   reset_db
+  create_users(5)
   create_pins(100)
   create_comments(2..8)
   
@@ -17,6 +18,26 @@ def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
+end
+
+def create_users(quantity)
+  i = 0
+
+  quantity.times do
+    user_data = {
+      email: "user_#{i}@email.com",
+      password: "testtest"
+    }
+
+    # if i == 0
+    #   user_data[:admin] = true
+    # end
+
+    user = User.create!(user_data)
+    puts "User created with id #{user.id}"
+
+    i += 1
+  end
 end
 
 def create_sentence
@@ -45,7 +66,8 @@ def create_pins(quantity)
       description: create_sentence,
       pin_image: upload_random_image,
       tag_list: tag_list,
-      category_list: category_list
+      category_list: category_list,
+      user_id: User.all.sample.id
     )
 
     puts "Pin with id #{pin.id} just created"

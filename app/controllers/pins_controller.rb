@@ -32,6 +32,10 @@ class PinsController < ApplicationController
 
     respond_to do |format|
       if @pin.save
+        if current_user.pins.count == 1
+          UserMailer.with(user: current_user).welcome_email.deliver_now
+        end
+
         format.html { redirect_to pin_url(@pin), notice: "Pin was successfully created." }
         format.json { render :show, status: :created, location: @pin }
       else
@@ -72,6 +76,6 @@ class PinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pin_params
-      params.require(:pin).permit(:title, :description, :pin_image, :tag_list, :category_list)
+      params.require(:pin).permit(:title, :description, :pin_image, :tag_list, :category_list).merge(user_id: current_user.id)
     end
 end

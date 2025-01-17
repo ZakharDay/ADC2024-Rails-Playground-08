@@ -6,5 +6,7 @@ class User < ApplicationRecord
   
   has_many :likes
   has_one :profile
+  has_many :pins
+  
   after_create :create_profile
 end
