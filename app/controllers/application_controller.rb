@@ -6,47 +6,45 @@ class ApplicationController < ActionController::Base
 
   def authenticate_guest
     if current_user
-      puts "USER"
-
       if cookies[:guest_token]
-        puts cookies[:guest_token]
+        @guest = Guest.find_by_jti(cookies[:guest_token])
+        @cart = @guest.carts.first
 
         if current_user.carts.any?
-          guest = Guest.find_by_jti(cookies[:guest_token])
-          guest.destroy!
-          @cart = current_user.carts.first
+          if @cart.products.any?
+            current_user.carts.first.destroy!
+            @cart.update!(cartable_type: 'User', cartable_id: current_user.id)
+          else
+            @cart = current_user.carts.first
+          end
         else
-          guest = Guest.find_by_jti(cookies[:guest_token])
-          @cart = guest.carts.first
           @cart.update!(cartable_type: 'User', cartable_id: current_user.id)
-          guest.destroy!
         end
 
+        @guest.destroy!
         cookies.delete(:guest_token)
       else
         if current_user.carts.any?
-          @cart = current_user.carts.create
+          @cart = current_user.carts.first
         else
-          current_user.carts.create!
+          @cart.create!(cartable_type: 'User', cartable_id: current_user.id)
         end
       end
     else
-      puts "GUEST"
-
       if cookies[:guest_token]
-        puts "HAS COOKIES"
-        puts cookies[:guest_token]
-        @guest = Guest.find_by_jti(cookies[:guest_token])
-        puts "Guest with id #{@guest.id}"
-      else
-        puts "NO COOKIES"
-        jti = SecureRandom.uuid
-        @guest = Guest.create(jti: jti)
-        cookies[:guest_token] = jti
-        puts "Guest with id #{@guest.id}"
-      end
+        jti = cookies[:guest_token]
+        @guest = Guest.find_by_jti(jti)
+        @cart = @guest.carts.last
 
-      @cart = @guest.carts.first
+        puts "GUEST TOKEN"
+        puts jti
+      else
+        puts "NO TOKEN"
+        jti = SecureRandom.uuid
+        @guest = Guest.create!(jti: jti)
+        @cart = @guest.carts.last
+        cookies[:guest_token] = jti
+      end
     end
 
     # cookies.delete(:guest_token)
