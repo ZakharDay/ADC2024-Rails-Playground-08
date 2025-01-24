@@ -20,6 +20,7 @@
 </head>
 
 <body>
+  <%= render "cartbar" if @cart %>
   <%= yield :breadcrumbs %>
 
   <%= yield %>

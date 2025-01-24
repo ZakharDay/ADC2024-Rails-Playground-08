@@ -6,6 +6,10 @@
   )
 %>
 
+<%= session.to_json %>
+<br><br>
+<%= cookies.to_json %>
+
 <%= link_to "New pin", new_pin_path, id: "new_pin_link", data: { turbo_stream: true } %>
 
 <br><br>

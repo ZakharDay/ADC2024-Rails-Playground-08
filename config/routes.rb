@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "cart/add/:id", to: "carts#add", as: "cart_add"
+  get "cart/destroy", to: "carts#destroy", as: "cart_destroy"
+
+  resources :products
   resources :publications
 
   get "like/toggle"

@@ -1,0 +1,14 @@
+<%
+  items = 0
+  total = 0
+
+  @cart.products.each do |product|
+    items += 1
+    total += product.price
+  end
+%>
+
+<div id="cartbar">
+  Корзина: товаров <%= items %>, на сумму <%= total %> ₽
+  <%= link_to "Очистить корзину", cart_destroy_path, data: { turbo_stream: true } %>
+</div>

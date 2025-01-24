@@ -43,6 +43,7 @@ gem "sassc"
 gem "meta-tags"
 gem "russian"
 gem "letter_opener"
+gem "devise-jwt"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

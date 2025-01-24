@@ -36,7 +36,7 @@
     <% end %>
   </p>
 
-  <%= render partial: "like/button", locals: { likeable: pin } %>
+  <%= render partial: "like/button", locals: { likeable: pin } if current_user %>
 
   <p>
     <%= link_to "Show this pin", pin %>
