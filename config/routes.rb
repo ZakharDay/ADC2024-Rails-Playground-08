@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :api, format: 'json' do
     namespace :v1 do
-      resources :pins, only: [:index, :show]
+      resources :pins, only: [:index, :show, :create]
       get "welcome/index"
 
       devise_scope :user do
