@@ -400,6 +400,7 @@ DEPENDENCIES
   debug
   devise
   devise-jwt
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   jwt

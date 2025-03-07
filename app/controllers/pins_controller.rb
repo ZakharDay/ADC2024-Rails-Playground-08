@@ -7,6 +7,14 @@ class PinsController < ApplicationController
     @pins = Pin.all
   end
 
+  def most_liked
+    @pins = Pin.left_joins(:likes)
+               .group(:id)
+               .order('COUNT(likes.id) DESC')
+
+    render :index
+  end
+
   def by_tag
     @pins = Pin.tagged_with(params[:tag])
 

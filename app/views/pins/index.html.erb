@@ -34,9 +34,23 @@
 
 <% content_for :title, "Pins" %>
 
+<%
+  counter = 0
+
+  @pins.each do |pin|
+    counter += 1
+  end
+%>
+
+<%= counter %>
+
+<%#= @pins.count %>
+<%#= @pins.size %>
+<%#= @pins.class_name %>
+
 <div id="pin_index_heading">
-  <h1>Пины (<%= @pins.count %>)</h1>
-  <p><%= @pins.count %> <%= Russian.p(@pins.count, "пин", "пина", "пинов") %></p>
+  <h1>Пины (<%#= @pins.count %>)</h1>
+  <p><%#= @pins.count %> <%#= Russian.p(@pins.count, "пин", "пина", "пинов") %></p>
 </div>
 
 <div id="pins">

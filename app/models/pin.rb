@@ -7,5 +7,7 @@ class Pin < ApplicationRecord
   acts_as_taggable_on :tags
   acts_as_taggable_on :categories
 
-  default_scope { order(created_at: "DESC") }
+  has_rich_text :description
+
+  # default_scope { order(created_at: "DESC") }
 end

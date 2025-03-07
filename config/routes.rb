@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   resources :pins do
     resources :comments
 
+    collection do
+      get "most_liked"
+    end
+
     get "/by_tag/:tag", to: "pins#by_tag", on: :collection, as: "tagged"
   end
 
