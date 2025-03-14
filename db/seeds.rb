@@ -9,6 +9,7 @@ def seed
   create_products(100)
   create_pins(100)
   create_comments(2..8)
+  create_likes
   
   5.times do
     create_comment_replies
@@ -82,6 +83,13 @@ def create_comments(quantity)
       comment = Comment.create(pin_id: pin.id, body: create_sentence)
       puts "Comment with id #{comment.id} for pin with id #{comment.pin.id} just created"
     end
+  end
+end
+
+def create_likes
+  Pin.all.each do |pin|
+    like = User.all.sample.likes.create(likeable_type: "Pin", likeable_id: pin.id)
+    puts "Like just created"
   end
 end
 

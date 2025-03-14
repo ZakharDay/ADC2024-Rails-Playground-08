@@ -1,1 +1,1 @@
-<%#= turbo_stream.replace "like_#{dom_id(@likeable)}", partial: "likes/like", locals: { likeable: @likeable } %>
+<%= turbo_stream.replace "like_#{dom_id(@likeable)}_button", partial: "likes/button", locals: { likeable: @likeable } %>
