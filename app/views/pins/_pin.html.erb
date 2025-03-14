@@ -1,44 +1,23 @@
-<div id="<%= dom_id pin %>">
+<div class="pin" id="<%= dom_id pin %>">
   <% if pin.pin_image.try(:url) %>
     <%= image_tag pin.pin_image.url, width: 600 if pin.pin_image.present? %>
     <div><%= bytes_to_megabytes(pin.pin_image.file.size) %> Mb</div>
-
-    <br><br>
-
-    <%= image_tag pin.pin_image.q70.url, width: 600 if pin.pin_image.present? %>
-    <div><%= bytes_to_megabytes(pin.pin_image.q70.file.size) %> Mb</div>
-
-    <br><br>
-
-    <%= image_tag pin.pin_image.thumb.url if pin.pin_image.present? %>
-    <div><%= bytes_to_kilobytes(pin.pin_image.thumb.file.size) %> Kb</div>
   <% end %>
 
-  <p>
-    <strong>Title:</strong>
-    <%= pin.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= pin.description %>
-  </p>
+  <h2><%= link_to pin.title, pin %></h2>
+  <p><%= pin.description %></p>
 
   <p>
     <% pin.tags.each do |tag| %>
-    <%= link_to tag.name, tagged_pins_path(tag.name) %>
+      <%= link_to tag.name, tagged_pins_path(tag.name) %>
     <% end %>
   </p>
 
   <p>
     <% pin.categories.each do |tag| %>
-    <%= link_to tag.name, tagged_pins_path(tag.name) %>
+      <%= link_to tag.name, tagged_pins_path(tag.name) %>
     <% end %>
   </p>
 
-  <%= render partial: "like/button", locals: { likeable: pin } if current_user %>
-
-  <p>
-    <%= link_to "Show this pin", pin %>
-  </p>
+  <%= render partial: "likes/like", locals: { likeable: pin } %>
 </div>
