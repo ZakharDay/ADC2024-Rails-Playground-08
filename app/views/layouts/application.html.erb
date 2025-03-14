@@ -23,7 +23,6 @@
   <%= render "cartbar" if @cart %>
   <%= yield :breadcrumbs %>
 
-  <%= Rails.application.credentials.devise_jwt_secret_key %>
   <%= yield %>
 </body>
 
