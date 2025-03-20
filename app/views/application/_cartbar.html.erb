@@ -9,6 +9,6 @@
 %>
 
 <div id="cartbar">
-  Корзина: товаров <%= items %>, на сумму <%= total %> ₽
+  Корзина: товаров <span class="items"><%= items %></span>, на сумму <span class="total"><%= total %></span> ₽
   <%= link_to "Очистить корзину", cart_destroy_path, data: { turbo_stream: true } %>
 </div>

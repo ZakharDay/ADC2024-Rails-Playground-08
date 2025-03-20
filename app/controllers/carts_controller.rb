@@ -11,9 +11,15 @@ class CartsController < ApplicationController
 
     @cart.products << @product
 
-    respond_to do |format|
-      format.turbo_stream
+    items = 0
+    total = 0
+
+    @cart.products.each do |product|
+      items += 1
+      total += product.price
     end
+
+    render json: { items: items, total: total }, status: :ok
   end
 
   def destroy
