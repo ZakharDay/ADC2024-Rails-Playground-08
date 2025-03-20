@@ -12,16 +12,6 @@ class LikesController < ApplicationController
     else
       current_user.likes.create!(likeable_type: params[:type], likeable_id: params[:id])
     end
-
-    LikesController.renderer.instance_variable_set(
-      :@env, {
-        "HTTP_HOST"=>"localhost:3000", 
-        "HTTPS"=>"off", 
-        "REQUEST_METHOD"=>"GET", 
-        "SCRIPT_NAME"=>"",   
-        "warden" => warden
-      }
-    )
   end
 
 end
