@@ -34,8 +34,18 @@ class ApplicationController < ActionController::Base
       if cookies[:guest_token]
         jti = cookies[:guest_token]
         @guest = Guest.find_by_jti(jti)
-        @cart = @guest.carts.last
 
+        if @guest
+          @cart = @guest.carts.last
+        else
+          cookies.delete(:guest_token)
+
+          jti = SecureRandom.uuid
+          @guest = Guest.create!(jti: jti)
+          @cart = @guest.carts.last
+          cookies[:guest_token] = jti
+        end
+        
         puts "GUEST TOKEN"
         puts jti
       else
