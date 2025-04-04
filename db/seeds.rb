@@ -5,15 +5,15 @@
 
 def seed
   reset_db
-  # create_users(5)
-  # create_products(100)
-  # create_pins(100)
-  # create_comments(2..8)
-  # create_likes
+  create_users(5)
+  create_products(100)
+  create_pins(100)
+  create_comments(2..8)
+  create_likes
   
-  # 5.times do
-  #   create_comment_replies
-  # end
+  5.times do
+    create_comment_replies
+  end
 
   create_galleries(2..5)
   create_gallery_images
