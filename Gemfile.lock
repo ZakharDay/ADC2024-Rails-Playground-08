@@ -222,6 +222,9 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
@@ -402,6 +405,7 @@ DEPENDENCIES
   letter_opener
   meta-tags
   pg
+  pg_search
   puma (>= 5.0)
   rack-cors
   rails (~> 7.2.1)

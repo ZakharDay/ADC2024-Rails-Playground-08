@@ -1,4 +1,7 @@
 class Pin < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [:title, :description]
+
   has_many :comments
   has_many :likes, as: :likeable
   belongs_to :user
