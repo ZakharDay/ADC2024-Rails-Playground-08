@@ -1,0 +1,23 @@
+<div class="pinAutocomplete" id="<%= dom_id pin %>">
+  <% if pin.pin_image.try(:url) %>
+    <%= image_tag pin.pin_image.url, width: 600 if pin.pin_image.present? %>
+    <div><%= bytes_to_megabytes(pin.pin_image.file.size) %> Mb</div>
+  <% end %>
+
+  <h2><%= link_to pin.title, pin %></h2>
+  <p><%= pin.description %></p>
+
+  <p>
+    <% pin.tags.each do |tag| %>
+      <%= link_to tag.name, tagged_pins_path(tag.name) %>
+    <% end %>
+  </p>
+
+  <p>
+    <% pin.categories.each do |tag| %>
+      <%= link_to tag.name, tagged_pins_path(tag.name) %>
+    <% end %>
+  </p>
+
+  <%= render partial: "likes/like_control", locals: { likeable: pin } %>
+</div>

@@ -1,0 +1,9 @@
+<div class="searchFormAutocompleteResult" id="searchFormAutocompleteResult">
+  <% items.each do |item| %>
+    <% if item.searchable_type == "Pin" %>
+      <%= render "pins/pin_autocomplete", pin: item.searchable %>
+    <% elsif item.searchable_type == "Product" %>
+      <%= render "products/product_autocomplete", product: item.searchable %>
+    <% end %>
+  <% end %>
+</div>

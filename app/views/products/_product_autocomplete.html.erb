@@ -1,0 +1,11 @@
+<div class="productAutocomplete" data-controller="product" data-product-url-value="<%= cart_add_url(product) %>">
+  <h2><%= link_to product.name, product %></h2>
+  <p><%= product.description %></p>
+  
+  <p>
+    <%= content_tag :span, product.price %>
+    <%#= link_to "Add to cart", cart_add_url(product), data: { turbo_stream: true } %>
+
+    <div class="addToCartButton" data-action="click->product#addToCart">Добавить в корзину</div>
+  </p>
+</div>

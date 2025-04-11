@@ -1,5 +1,4 @@
 class WelcomeController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: :search
   
   def index
     name = 'TEST'
@@ -12,7 +11,6 @@ class WelcomeController < ApplicationController
 
   def search
     @items = PgSearch.multisearch(params['query'])
-    puts @items.count
   end
 
 end
