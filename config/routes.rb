@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   get "welcome/index"
   get "welcome/dice"
   
-  post "search", to: "welcome#search", as: "welcome_search"
+  get "search", to: "welcome#search", as: "welcome_search"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
