@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_11_122943) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_17_170904) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_11_122943) do
     t.text "body"
     t.bigint "pin_id", null: false
     t.integer "comment_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pin_id"], name: "index_comments_on_pin_id"
@@ -100,6 +101,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_11_122943) do
     t.string "likeable_type"
     t.integer "likeable_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "comment_id"
+    t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

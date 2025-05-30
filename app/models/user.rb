@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :likes
   has_one :profile
   has_many :pins
-
+  has_many :notifications
+  has_many :comments
   has_many :carts, as: :cartable
   
   after_create :create_profile

@@ -23,10 +23,19 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
         @pin = @comment.pin
+
+        if @comment.user.id != @pin.user.id
+          user = @pin.user
+          body = "Комментарий '#{@comment.body}' от пользователя #{@comment.user.email}"
+          notification = user.notifications.create!(body: body, comment: @comment)
+          ActionCable.server.broadcast("notifications_#{user.id}", { body: body, url: pin_path(@pin, anchor: "comment_#{@comment.id}") })
+        end
+
         format.html { redirect_to @comment, notice: "Comment was successfully created." }
         format.turbo_stream
       else
