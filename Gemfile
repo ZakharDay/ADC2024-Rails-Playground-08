@@ -49,6 +49,13 @@ gem "jwt"
 gem "acts_as_list"
 gem "pg_search"
 
+gem "capistrano"
+gem "capistrano-rbenv"
+gem "capistrano-rails"
+gem "capistrano-bundler"
+gem "capistrano3-puma", "5.2.0"
+gem "sshkit-sudo"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
