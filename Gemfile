@@ -53,7 +53,7 @@ gem "capistrano"
 gem "capistrano-rbenv"
 gem "capistrano-rails"
 gem "capistrano-bundler"
-gem "capistrano3-puma", "5.2.0"
+gem "capistrano3-puma"
 gem "sshkit-sudo"
 
 group :development, :test do
