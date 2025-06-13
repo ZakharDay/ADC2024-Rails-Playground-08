@@ -9,8 +9,8 @@ namespace :setup do
     @tags = ["cюрреализм", "нежность", "онтология", "природа", "повседневность", "философия", "жизнь", "цифра", "семантика"] 
 
     def seed
-      create_users(5)
-      create_products(100)
+      # create_users(5)
+      # create_products(100)
       create_pins(100)
       create_comments(2..8)
       create_likes
