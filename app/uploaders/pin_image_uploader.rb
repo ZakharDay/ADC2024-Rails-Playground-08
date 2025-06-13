@@ -52,7 +52,7 @@ class PinImageUploader < CarrierWave::Uploader::Base
   end
 
   def asset_host
-    return "http://localhost:3000"
+    return "http://81.177.143.125"
   end
 
   protected
