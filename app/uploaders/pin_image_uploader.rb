@@ -51,9 +51,9 @@ class PinImageUploader < CarrierWave::Uploader::Base
     "#{secure_token(10)}.#{file.extension}" if original_filename
   end
 
-  def asset_host
-    return "http://81.177.143.125"
-  end
+  # def asset_host
+  #   return "http://81.177.143.125"
+  # end
 
   protected
 
